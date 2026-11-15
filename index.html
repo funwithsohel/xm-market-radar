@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080b10">
+<title>XM Market Radar · Public live feeds</title>
+<style>
+:root{--bg:#080b10;--card:#111720;--card2:#151e29;--line:#283443;--text:#eef3f8;--muted:#9aa8b7;--gold:#e7b955;--green:#75d5a2;--blue:#8dbdff;--amber:#ffcd78;--red:#ff8d87;--shadow:0 12px 32px rgba(0,0,0,.24)}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% -10%,#1c2936 0,transparent 470px),var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}.wrap{max-width:1250px;margin:auto;padding:22px 16px 54px}.hero{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;padding:5px 0 16px}.eyebrow{text-transform:uppercase;color:var(--gold);font-size:11px;letter-spacing:.14em;font-weight:850}.hero h1{margin:6px 0 8px;font-size:clamp(27px,5vw,43px);line-height:1.08;letter-spacing:-.035em}.hero p{margin:0;max-width:780px;color:var(--muted);font-size:14px}.brand{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:11px;white-space:nowrap}.brandmark{width:38px;height:38px;display:grid;place-items:center;background:#241f16;border:1px solid #715c32;border-radius:12px;color:var(--gold);font-weight:950}.local-time{text-align:right;color:#d1dae2;font-size:12px;margin-top:7px}
+.ticker-wrap{overflow:hidden;border:1px solid var(--line);border-radius:12px;background:#0e141c;margin:10px 0 14px;min-height:62px}.ticker-wrap .tradingview-widget-container{width:100%}.banner{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:flex-start;border:1px solid #6b562d;background:linear-gradient(110deg,rgba(231,185,85,.15),rgba(231,185,85,.045));padding:13px 15px;border-radius:13px;margin:14px 0}.banner-icon{width:24px;height:24px;border-radius:8px;background:#342b1b;color:var(--gold);display:grid;place-items:center;font-weight:900}.banner strong{display:block;margin-bottom:2px}.banner p{margin:0;color:#d3c8ae;font-size:12px}.banner a,.small-link{color:#ffdda0;text-decoration:none;border-bottom:1px dotted #9d8045}.banner a:hover,.small-link:hover{color:white}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 18px}.nav a,.btn{border:1px solid var(--line);background:#121a24;border-radius:10px;padding:9px 12px;color:#dbe4ec;text-decoration:none;font-size:12px;font-weight:750}.nav a:hover,.btn:hover{border-color:#8b713a;color:#ffe4a8}.nav a.primary{background:#292317;border-color:#6b562d;color:#ffe2a2}.grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);gap:14px;align-items:start}.panel{border:1px solid var(--line);border-radius:16px;background:linear-gradient(145deg,rgba(17,23,32,.97),rgba(13,18,25,.97));box-shadow:var(--shadow);overflow:hidden;margin:14px 0}.panel-head{padding:15px 16px 12px;border-bottom:1px solid #25303c;display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.panel-head h2{font-size:17px;margin:0}.panel-head p{margin:3px 0 0;color:var(--muted);font-size:11px}.tag{font-size:10px;border-radius:999px;padding:5px 8px;border:1px solid #355b49;color:#a4e4bd;background:#14261e;white-space:nowrap;font-weight:800}.tag.gold{border-color:#705a2c;color:#ffdd94;background:#2b2418}.panel-body{padding:14px}.quotes-box{min-height:470px}.chart-box{height:565px;min-height:490px}.calendar-box{height:630px;min-height:560px}.chart-controls{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}.chart-controls select{background:#0c1219;color:var(--text);border:1px solid #334253;border-radius:9px;padding:9px 10px;font:13px system-ui;max-width:100%}.chart-controls span{font-size:10px;color:var(--muted)}.tv-container{height:100%;width:100%}.tv-container__widget{height:100%;width:100%}.tradingview-widget-container{height:100%;width:100%}.tradingview-widget-container__widget{height:100%;width:100%}.placeholder{border:1px dashed #405063;background:#0c1219;border-radius:11px;padding:18px;color:var(--muted);font-size:12px;text-align:center}.external-links{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.external-links a{display:block;background:#0d141c;border:1px solid #2c3948;border-radius:11px;padding:12px;color:#dce5ed;text-decoration:none}.external-links a:hover{border-color:#9a7a3b}.external-links b{display:block;color:#f1d49a;font-size:12px}.external-links span{display:block;color:var(--muted);font-size:10px;margin-top:3px}.how{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.how .item{background:#0d141c;border:1px solid #2a3644;border-radius:12px;padding:12px}.how .n{display:inline-grid;place-items:center;width:23px;height:23px;border-radius:7px;background:#302817;color:var(--gold);font-weight:900;font-size:11px;margin-bottom:7px}.how b{display:block;font-size:12px;margin-bottom:4px}.how span{display:block;color:var(--muted);font-size:11px}.footnote{font-size:11px;color:#8694a3;margin:9px 2px}.feed-list{margin:0;padding-left:18px;color:var(--muted);font-size:12px}.feed-list li{margin:7px 0}.data-source{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.data-source a{color:#bcd7ff}.hr{height:1px;background:#25303c;margin:12px 0}.badge-row{display:flex;gap:7px;flex-wrap:wrap}.badge{border:1px solid #2c3948;background:#0e151e;border-radius:999px;padding:5px 9px;color:#b9c6d2;font-size:10px}.disclaimer{border-left:2px solid var(--gold);padding:2px 0 2px 10px;color:#aeb9c5;font-size:11px;margin-top:12px}.loading{font-size:11px;color:#7f8c99;padding:10px}.manual-callout{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border:1px solid #31475c;border-radius:14px;background:#101a25;padding:13px 15px}.manual-callout p{margin:2px 0;color:var(--muted);font-size:12px}.manual-callout strong{color:#dceaff}.pill-link{border:1px solid #466383;background:#18283a;color:#cfe3ff;padding:9px 12px;border-radius:10px;text-decoration:none;font-weight:800;font-size:12px}.tiny{font-size:10px;color:#7e8c9a}
+@media(max-width:900px){.grid{grid-template-columns:1fr}.quotes-box{min-height:520px}.how{grid-template-columns:1fr 1fr}.chart-box{height:560px}.calendar-box{height:610px}}
+@media(max-width:560px){.wrap{padding:16px 11px 38px}.hero{display:block}.brand{margin-top:12px;justify-content:space-between}.panel-head{padding:13px}.panel-body{padding:10px}.quotes-box{min-height:490px}.chart-box{height:525px;min-height:470px}.calendar-box{height:600px;min-height:540px}.how{grid-template-columns:1fr 1fr;gap:7px}.how .item{padding:10px}.external-links{grid-template-columns:1fr 1fr}.nav a{padding:8px 10px}.ticker-wrap{margin-top:6px}.banner{padding:11px}.chart-controls{align-items:flex-start}.chart-controls select{width:100%}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<header class="hero">
+  <div><div class="eyebrow">Free public-feed layer · no XM login or API key</div><h1>XM Market Radar</h1><p>Live public charts, a broad symbol watchlist and a scheduled-event calendar, mapped to the 18 instruments in your MT5 screenshots. Use these for context; use XM MT5 for the executable quote and spread.</p></div>
+  <div class="brand"><span class="brandmark">XR</span><div><b>Public data</b><div class="tiny">Compared with XM before entry</div><div class="local-time" id="bahrainClock">Bahrain time · loading…</div></div></div>
+</header>
+
+<div class="ticker-wrap" aria-label="Public market ticker">
+  <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    {
+      "symbols": [
+        {"description":"GOLD · OANDA proxy","proName":"OANDA:XAUUSD"},
+        {"description":"SILVER · OANDA proxy","proName":"OANDA:XAGUSD"},
+        {"description":"EURUSD · FX_IDC","proName":"FX_IDC:EURUSD"},
+        {"description":"GBPUSD · FX_IDC","proName":"FX_IDC:GBPUSD"},
+        {"description":"USDJPY · FX_IDC","proName":"FX_IDC:USDJPY"},
+        {"description":"USDCAD · FX_IDC","proName":"FX_IDC:USDCAD"},
+        {"description":"USDCHF · FX_IDC","proName":"FX_IDC:USDCHF"},
+        {"description":"GBPJPY · FX_IDC","proName":"FX_IDC:GBPJPY"},
+        {"description":"GBPCHF · FX_IDC","proName":"FX_IDC:GBPCHF"},
+        {"description":"US500 · Forex.com proxy","proName":"FOREXCOM:SPXUSD"},
+        {"description":"US100 · Forex.com proxy","proName":"FOREXCOM:NSXUSD"},
+        {"description":"US30 · Forex.com proxy","proName":"FOREXCOM:DJI"},
+        {"description":"WTI · TVC proxy","proName":"TVC:USOIL"},
+        {"description":"BTCUSD · Bitstamp","proName":"BITSTAMP:BTCUSD"},
+        {"description":"ETHUSD · Bitstamp","proName":"BITSTAMP:ETHUSD"},
+        {"description":"SpaceX · Nasdaq","proName":"NASDAQ:SPCX"},
+        {"description":"USD index · TradingView","proName":"INDEX:DXY"},
+        {"description":"USD Index Dec 2026 · ICE future","proName":"ICEUS:DXZ2026"}
+      ],
+      "showSymbolLogo": false,
+      "colorTheme": "dark",
+      "isTransparent": true,
+      "displayMode": "adaptive",
+      "locale": "en"
+    }
+    </script>
+  </div>
+</div>
+
+<section class="banner">
+  <div class="banner-icon">!</div><div><strong>These are public-feed proxies, not XM prices</strong><p>TradingView’s widget data is real-time for forex and crypto, while stock data can be delayed; other markets vary by provider. A public chart may differ from XM’s CFD price, spread, session or contract. Compare the exact XM symbol in MT5 before using a level or placing an order. <a href="https://www.tradingview.com/widget-docs/faq/data/" target="_blank" rel="noopener">TradingView data notes ↗</a></p></div>
+</section>
+
+<nav class="nav" aria-label="Dashboard sections"><a class="primary" href="#quotes">Live watchlist</a><a href="#chart">Chart & watchlist</a><a href="#calendar">Economic calendar</a><a href="#news">News links</a><a href="manual_board.html">Liquidity/structure notes ↗</a></nav>
+
+<section class="panel" id="quotes">
+  <div class="panel-head"><div><h2>Selected symbols · live public watchlist</h2><p>Grouped by market. If a symbol does not load, use the mapped TradingView symbol shown in its group or search it inside the chart.</p></div><span class="tag">External feed</span></div>
+  <div class="panel-body quotes-box">
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
+      {
+        "width": "100%",
+        "height": "465",
+        "isTransparent": true,
+        "colorTheme": "dark",
+        "locale": "en",
+        "showSymbolLogo": true,
+        "symbolsGroups": [
+          {"name":"Metals","symbols":[
+            {"name":"OANDA:XAUUSD","displayName":"GOLD · spot proxy"},
+            {"name":"OANDA:XAGUSD","displayName":"SILVER · spot proxy"}
+          ]},
+          {"name":"Forex","symbols":[
+            {"name":"FX_IDC:EURUSD","displayName":"EURUSD"},
+            {"name":"FX_IDC:GBPUSD","displayName":"GBPUSD"},
+            {"name":"FX_IDC:USDJPY","displayName":"USDJPY"},
+            {"name":"FX_IDC:USDCAD","displayName":"USDCAD"},
+            {"name":"FX_IDC:USDCHF","displayName":"USDCHF"},
+            {"name":"FX_IDC:GBPJPY","displayName":"GBPJPY"},
+            {"name":"FX_IDC:GBPCHF","displayName":"GBPCHF"}
+          ]},
+          {"name":"Indices","symbols":[
+            {"name":"FOREXCOM:SPXUSD","displayName":"US500Cash proxy"},
+            {"name":"FOREXCOM:NSXUSD","displayName":"US100Cash proxy"},
+            {"name":"FOREXCOM:DJI","displayName":"US30Cash proxy"}
+          ]},
+          {"name":"Energy","symbols":[
+            {"name":"TVC:USOIL","displayName":"OILCash · WTI proxy"}
+          ]},
+          {"name":"Crypto","symbols":[
+            {"name":"BITSTAMP:BTCUSD","displayName":"BTCUSD · Bitstamp"},
+            {"name":"BITSTAMP:ETHUSD","displayName":"ETHUSD · Bitstamp"}
+          ]},
+          {"name":"Equity CFD","symbols":[
+            {"name":"NASDAQ:SPCX","displayName":"SpaceX · Nasdaq share"}
+          ]},
+          {"name":"USD indices","symbols":[
+            {"name":"INDEX:DXY","displayName":"USD_FX_Index · DXY proxy"},
+            {"name":"ICEUS:DXZ2026","displayName":"USDX-DEC26 · ICE Dec 2026 future"}
+          ]}
+        ]
+      }
+      </script>
+    </div>
+    <p class="footnote">Symbol mapping is approximate by instrument type. In particular, the ICE December 2026 Dollar Index future is not the same contract/feed as XM’s CFD; the DXY index proxy may also use a different calculation.</p>
+  </div>
+</section>
+
+<div class="grid">
+  <section class="panel" id="chart">
+    <div class="panel-head"><div><h2>Interactive chart · public source</h2><p>Change symbol/timeframe in the chart or use the embedded watchlist. Start with H4/H1 context; use M15 for a trigger only if it fits your plan.</p></div><span class="tag gold">Not XM execution data</span></div>
+    <div class="panel-body chart-box">
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+        {
+          "autosize": true,
+          "symbol": "OANDA:XAUUSD",
+          "interval": "60",
+          "timezone": "Asia/Bahrain",
+          "theme": "dark",
+          "backgroundColor": "rgba(13, 18, 25, 1)",
+          "style": "1",
+          "withdateranges": true,
+          "hide_side_toolbar": true,
+          "allow_symbol_change": true,
+          "save_image": false,
+          "locale": "en",
+          "watchlist": [
+            "OANDA:XAUUSD","OANDA:XAGUSD",
+            "FX_IDC:EURUSD","FX_IDC:GBPUSD","FX_IDC:USDJPY","FX_IDC:USDCAD","FX_IDC:USDCHF","FX_IDC:GBPJPY","FX_IDC:GBPCHF",
+            "FOREXCOM:SPXUSD","FOREXCOM:NSXUSD","FOREXCOM:DJI","TVC:USOIL",
+            "BITSTAMP:BTCUSD","BITSTAMP:ETHUSD","NASDAQ:SPCX","INDEX:DXY","ICEUS:DXZ2026"
+          ],
+          "calendar": false,
+          "support_host": "https://www.tradingview.com"
+        }
+        </script>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="calendar">
+    <div class="panel-head"><div><h2>Economic calendar</h2><p>Scheduled events for the currencies most relevant to your current watchlist. Confirm times in Bahrain (UTC+3).</p></div><span class="tag gold">Scheduled events</span></div>
+    <div class="panel-body calendar-box">
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-economic-calendar.js" async>
+        {
+          "colorTheme": "dark",
+          "isTransparent": true,
+          "width": "100%",
+          "height": "570",
+          "locale": "en",
+          "importanceFilter": "-1,0,1",
+          "countryFilter": "us,eu,gb,jp,ca,ch"
+        }
+        </script>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="panel" id="news">
+  <div class="panel-head"><div><h2>News & market context</h2><p>Free sources for headlines and the main scheduled catalysts; headlines are context, not a trade trigger.</p></div><span class="tag">Open source pages</span></div>
+  <div class="panel-body">
+    <div class="external-links">
+      <a href="https://www.tradingview.com/news/" target="_blank" rel="noopener"><b>TradingView news feed ↗</b><span>Market headlines; choose relevant markets and verify the original source.</span></a>
+      <a href="https://www.tradingview.com/economic-calendar/" target="_blank" rel="noopener"><b>Full economic calendar ↗</b><span>Scheduled releases, importance and affected economies.</span></a>
+      <a href="https://www.eia.gov/petroleum/supply/weekly/" target="_blank" rel="noopener"><b>US EIA petroleum reports ↗</b><span>Official weekly oil inventory release information.</span></a>
+      <a href="https://www.federalreserve.gov/newsevents.htm" target="_blank" rel="noopener"><b>Federal Reserve news ↗</b><span>Official US central-bank statements and events.</span></a>
+    </div>
+    <div class="disclaimer">This embeds scheduled macro events; it does not create a unified live breaking-news feed or infer whether a headline is bullish/bearish. Use the calendar’s country/importance filters and check the relevant source.</div>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="panel-head"><div><h2>How to turn the live view into a candidate list</h2><p>Prices and calendar update externally; structure and liquidity still need your own rules.</p></div><span class="tag gold">Decision support</span></div>
+  <div class="panel-body">
+    <div class="how">
+      <div class="item"><span class="n">1</span><b>Filter the environment</b><span>Check whether the market is open, the XM spread is normal, and a relevant high-impact release is near.</span></div>
+      <div class="item"><span class="n">2</span><b>Set the context</b><span>Use Daily/H4 to classify trend or range; record important swing points and prior day/week levels.</span></div>
+      <div class="item"><span class="n">3</span><b>Wait for evidence</b><span>At a meaningful level, watch for sweep/reclaim or clean continuation, then a structure shift and your defined trigger.</span></div>
+      <div class="item"><span class="n">4</span><b>Verify in XM</b><span>Confirm the same level, current bid/ask, spread, contract value and stop distance inside the XM MT5 app before any decision.</span></div>
+    </div>
+    <div class="hr"></div>
+    <div class="manual-callout"><div><strong>Use your detailed liquidity & structure checklist</strong><p>It records manual context and ranks checklist confluence. The public widgets do not fill it automatically.</p></div><a class="pill-link" href="manual_board.html">Open notes board ↗</a></div>
+    <p class="footnote">No widget or free data feed here detects institutional order flow or knows XM’s exact liquidity. “Liquidity levels” are chart-based estimates from visible price history, not the broker’s order book.</p>
+  </div>
+</section>
+
+<footer class="footnote data-source">
+  <span>Widgets/data:</span>
+  <a href="https://www.tradingview.com/widget-docs/" target="_blank" rel="noopener">TradingView widget docs ↗</a>
+  <span>·</span><a href="https://www.tradingview.com/widget-docs/faq/data/" target="_blank" rel="noopener">Data freshness & coverage ↗</a>
+  <span>·</span><span>Free embeds need an internet connection. This page stores no broker credentials.</span>
+</footer>
+</main>
+<script>
+(function(){
+ const fmt=new Intl.DateTimeFormat('en-BH',{timeZone:'Asia/Bahrain',weekday:'short',day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});
+ const el=document.getElementById('bahrainClock');
+ function tick(){el.textContent='Bahrain · '+fmt.format(new Date())+' UTC+3';}
+ tick();setInterval(tick,1000);
+})();
+</script>
+</body>
+</html>

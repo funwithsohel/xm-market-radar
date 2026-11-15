@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0a0d12">
+<title>XM Opportunity Board</title>
+<style>
+:root{--bg:#080b10;--panel:#111720;--panel2:#151e29;--line:#26313e;--text:#edf2f7;--muted:#9aa8b7;--gold:#e7b955;--green:#73d6a2;--red:#ff817d;--blue:#8dbdff;--amber:#ffc96b;--shadow:0 12px 32px rgba(0,0,0,.24)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at top,#17202b 0,#0a0d12 520px);color:var(--text);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}.wrap{max-width:1180px;margin:0 auto;padding:24px 18px 60px}.hero{display:flex;align-items:flex-start;justify-content:space-between;gap:22px;margin:8px 0 20px}.eyebrow{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);font-weight:800}.hero h1{margin:7px 0 8px;font-size:clamp(27px,5vw,43px);line-height:1.1;letter-spacing:-.03em}.hero p{margin:0;color:var(--muted);max-width:720px}.brand{display:flex;align-items:center;gap:10px;white-space:nowrap;color:var(--muted);font-size:12px}.mark{width:35px;height:35px;border:1px solid #6b5529;border-radius:11px;display:grid;place-items:center;color:var(--gold);font-weight:900;background:linear-gradient(140deg,#272115,#111720)}
+.notice{border:1px solid #66542e;background:linear-gradient(100deg,rgba(231,185,85,.13),rgba(231,185,85,.045));border-radius:14px;padding:14px 16px;margin:18px 0 16px;display:flex;gap:12px;align-items:flex-start}.notice .icon{color:var(--gold);font-size:19px;font-weight:900;line-height:1}.notice strong{display:block;margin-bottom:2px}.notice p{margin:0;color:#d1c8b4;font-size:13px}.notice b{color:#fff0cb}
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0 20px}.stat{padding:13px 15px;border:1px solid var(--line);background:rgba(17,23,32,.88);border-radius:13px;box-shadow:var(--shadow)}.stat .label{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.09em}.stat .value{display:block;font-size:24px;font-weight:800;margin-top:2px}.stat .hint{color:var(--muted);font-size:11px}.stat.gold .value{color:var(--gold)}.stat.green .value{color:var(--green)}.stat.red .value{color:var(--amber)}
+.panel{border:1px solid var(--line);background:rgba(17,23,32,.92);border-radius:16px;padding:17px;margin:16px 0;box-shadow:var(--shadow)}.panel h2{margin:0 0 9px;font-size:17px}.panel p{margin:5px 0;color:var(--muted);font-size:13px}.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:13px}.step{border:1px solid #273341;background:#0e141c;border-radius:12px;padding:12px}.step .n{display:inline-grid;place-items:center;background:#332b1b;color:var(--gold);width:24px;height:24px;border-radius:8px;font-size:12px;font-weight:900;margin-bottom:8px}.step strong{display:block;font-size:12px;margin-bottom:4px}.step span{font-size:11px;color:var(--muted)}
+.toolbar{position:sticky;top:0;z-index:5;margin:20px -4px 13px;padding:11px 4px;background:rgba(8,11,16,.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(38,49,62,.8)}.toolbar-top{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}.filters{display:flex;gap:7px;overflow:auto;padding:2px 0 6px;scrollbar-width:thin}.chip{border:1px solid var(--line);background:#111720;color:#bdc8d4;border-radius:999px;padding:8px 12px;font-size:12px;white-space:nowrap;cursor:pointer}.chip.active{border-color:#a68138;background:#2a2418;color:#ffe7ae}.actions{display:flex;gap:8px}.btn{border:1px solid var(--line);background:#141c26;color:var(--text);border-radius:10px;padding:9px 12px;font-size:12px;font-weight:700;cursor:pointer}.btn:hover,.chip:hover{border-color:#718096}.btn.primary{border-color:#775f30;color:#ffdfa0;background:#2a2418}.search{width:100%;margin-top:8px;background:#101720;border:1px solid var(--line);border-radius:10px;color:var(--text);padding:11px 13px;outline:none}.search:focus,input:focus,select:focus,textarea:focus{border-color:#a68138!important;box-shadow:0 0 0 3px rgba(231,185,85,.1)}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{border:1px solid var(--line);background:linear-gradient(145deg,#121a24,#0e141b);border-radius:15px;padding:15px;min-width:0;box-shadow:var(--shadow)}.card[hidden]{display:none}.card-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.sym-line{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.symbol{font-size:18px;font-weight:850;letter-spacing:.01em}.group{font-size:10px;text-transform:uppercase;letter-spacing:.08em;border:1px solid #344252;background:#151f2a;color:#bdcad7;border-radius:999px;padding:3px 8px}.desc{font-size:12px;color:var(--muted);margin-top:2px}.scorebox{text-align:right;min-width:76px}.score{font-size:19px;font-weight:900;color:var(--gold)}.score small{font-size:11px;color:var(--muted);font-weight:600}.meter{height:4px;width:70px;background:#2a3541;border-radius:5px;margin:4px 0 0 auto;overflow:hidden}.meter i{display:block;height:100%;background:linear-gradient(90deg,#89733c,#f1cb72);width:0;transition:width .2s}.driver{font-size:11px;color:#aebbc8;border-left:2px solid #64512c;padding:5px 0 5px 9px;margin:12px 0 13px}.driver b{color:#e8d7ac}.fields{display:grid;grid-template-columns:1fr 1fr;gap:9px}.field{min-width:0}.field.full{grid-column:1/-1}.field label{display:block;font-size:10px;color:#aeb9c5;text-transform:uppercase;letter-spacing:.055em;margin:0 0 4px;font-weight:750}.field input,.field select,.field textarea{width:100%;border:1px solid #2c3948;border-radius:9px;background:#0b1118;color:var(--text);padding:9px 10px;font:13px system-ui,-apple-system,"Segoe UI",sans-serif;outline:none;min-height:38px}.field textarea{min-height:58px;resize:vertical}.field input::placeholder,.field textarea::placeholder{color:#6f7d8c}.statusline{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:12px;padding-top:10px;border-top:1px solid #25303c}.status{font-size:10px;font-weight:850;letter-spacing:.055em;text-transform:uppercase;border-radius:999px;padding:6px 9px;border:1px solid #405064;background:#17212c;color:#c6d1dc}.status.watch{border-color:#80682e;background:#2c2618;color:#ffdc8b}.status.candidate{border-color:#33724f;background:#142a20;color:#9ce3b6}.status.caution{border-color:#805c2f;background:#302518;color:#ffd190}.status.block{border-color:#7b4140;background:#311d1d;color:#ffaaa6}.status.wait{color:#aab7c5}.status-note{font-size:10px;color:#8795a4;text-align:right}.guide{margin-top:18px}.guide-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.guide-card{border:1px solid var(--line);border-radius:12px;padding:13px;background:#0d131b}.guide-card h3{font-size:13px;margin:0 0 6px;color:#f0d9a1}.guide-card p,.guide-card li{font-size:12px;color:var(--muted)}.guide-card ul{padding-left:18px;margin:6px 0}.footer-note{font-size:11px;color:#8795a4;margin:15px 2px 0}.empty{display:none;border:1px dashed #394655;border-radius:12px;padding:25px;text-align:center;color:var(--muted)}.save-msg{font-size:10px;color:#8fa0b2;margin:7px 2px 0}.danger{color:#ffaaa6}.tiny{font-size:10px;color:#718092}
+@media(max-width:780px){.wrap{padding:18px 13px 42px}.hero{display:block}.brand{margin-top:12px}.summary{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:1fr 1fr}.step:last-child{grid-column:1/-1}.cards{grid-template-columns:1fr}.toolbar{margin-left:-2px;margin-right:-2px}.guide-grid{grid-template-columns:1fr}.notice{padding:12px}.actions .btn{padding:8px 9px}}
+@media(max-width:390px){.summary{gap:7px}.stat{padding:11px}.stat .value{font-size:21px}.fields{gap:8px}.field input,.field select{padding:8px}.actions{width:100%;justify-content:flex-end}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="hero">
+    <div><div class="eyebrow">Manual decision-support · XM MT5 watchlist</div><h1>Opportunity Board</h1><p>A structured way to triage liquidity, structure, price action and event risk across the symbols in your screenshots.</p></div>
+    <div class="brand"><span class="mark">XM</span><span>18 selected symbols<br><span class="tiny">No broker connection</span></span></div>
+  </header>
+
+  <section class="notice" aria-label="Data limitation">
+    <div class="icon">!</div><div><strong>Manual board — not a live scanner</strong><p>This page does <b>not</b> read XM prices, spreads, news or your MT5 account. Enter observations from MT5 and your chosen calendar, then confirm every level, spread and instrument specification in XM before acting. It never places trades.</p></div>
+  </section>
+
+  <section class="summary" aria-label="Watchlist summary">
+    <div class="stat gold"><span class="label">Symbols in this board</span><span class="value" id="totalCount">18</span><span class="hint">From your selected-symbol screenshots</span></div>
+    <div class="stat green"><span class="label">Candidate reviews</span><span class="value" id="candidateCount">0</span><span class="hint">Checklist complete; still verify manually</span></div>
+    <div class="stat red"><span class="label">Cautions / stand-aside</span><span class="value" id="cautionCount">0</span><span class="hint">Event, spread or session flags</span></div>
+    <div class="stat"><span class="label">Need context</span><span class="value" id="waitCount">18</span><span class="hint">No usable notes entered yet</span></div>
+  </section>
+
+  <section class="panel">
+    <h2>One repeatable scan</h2>
+    <p>Use the score to organize your review—not as a win probability. A liquidity sweep is useful evidence, but it is not mandatory for every continuation setup.</p>
+    <div class="steps">
+      <div class="step"><span class="n">1</span><strong>Calendar & session</strong><span>Mark relevant events and time in Bahrain time (UTC+3). Check whether the instrument is open and its spread is acceptable.</span></div>
+      <div class="step"><span class="n">2</span><strong>Higher-timeframe context</strong><span>Start with Daily/H4 direction or range; note the swing structure and where price is in that structure.</span></div>
+      <div class="step"><span class="n">3</span><strong>Liquidity location</strong><span>Record a meaningful level: prior day/week high or low, session extreme, equal highs/lows, or a clear swing.</span></div>
+      <div class="step"><span class="n">4</span><strong>Wait for price action</strong><span>Look for a sweep/reclaim or a clean continuation, then a structure shift and your chosen trigger. H1 setup → M15 trigger; adapt for swing trades.</span></div>
+      <div class="step"><span class="n">5</span><strong>Define the risk</strong><span>Write the invalidation before entry. Use the XM symbol’s own tick value, contract size and trading conditions to size any position.</span></div>
+    </div>
+  </section>
+
+  <section class="toolbar" aria-label="Search and filters">
+    <div class="toolbar-top">
+      <div class="filters" id="filters">
+        <button class="chip active" data-filter="all">All <span>18</span></button>
+        <button class="chip" data-filter="metals">Metals <span>2</span></button>
+        <button class="chip" data-filter="forex">Forex <span>7</span></button>
+        <button class="chip" data-filter="indices">Indices <span>3</span></button>
+        <button class="chip" data-filter="energy">Energy <span>1</span></button>
+        <button class="chip" data-filter="crypto">Crypto <span>2</span></button>
+        <button class="chip" data-filter="equity">Equity CFD <span>1</span></button>
+        <button class="chip" data-filter="usd-index">USD indices <span>2</span></button>
+      </div>
+      <div class="actions"><button class="btn" id="exportBtn" type="button">Export notes</button><button class="btn" id="importBtn" type="button">Import</button><input id="importFile" type="file" accept="application/json,.json" hidden><button class="btn primary" id="clearBtn" type="button">Clear board</button></div>
+    </div>
+    <input class="search" id="search" type="search" placeholder="Search symbol, market group or driver…" aria-label="Search symbols">
+    <div class="save-msg" id="saveMsg">Your notes stay in this browser when local storage is available. No account or credentials are stored.</div>
+  </section>
+
+  <section class="cards" id="cards" aria-label="Instrument opportunity cards"></section>
+  <div class="empty" id="empty">No symbols match that search. Try another term or choose “All”.</div>
+
+  <section class="panel guide">
+    <h2>Symbol-specific context from your list</h2>
+    <div class="guide-grid">
+      <div class="guide-card"><h3>Metals, USD and energy</h3><p>Gold and silver can react to USD moves, yields, central-bank communication and risk sentiment; oil has its own supply, inventory and demand catalysts. Treat these as context, not a directional rule.</p></div>
+      <div class="guide-card"><h3>Forex pairs</h3><p>Check the calendar for <em>both</em> currencies in a pair. Crosses such as GBPJPY and GBPCHF can move on either side’s central-bank news and broader risk sentiment.</p></div>
+      <div class="guide-card"><h3>Indices, crypto and equity CFD</h3><p>Check each symbol’s trading hours and spread. Index moves may react to macro news and constituent earnings; crypto can be volatile around the clock; single-share CFDs can gap on company headlines.</p></div>
+      <div class="guide-card"><h3>Two USD symbols to distinguish</h3><p><b>USD_FX_Index</b> and <b>USDX-DEC26</b> are separate symbols in your list. Confirm how XM quotes each one. The latter is labelled December 2026, so check its contract dates, hours and roll conditions in the XM specifications.</p></div>
+    </div>
+    <p class="footer-note"><b>Score (0–8):</b> context +1, liquidity level +1, sweep/reclaim +2, structure shift +2, trigger +1, invalidation defined +1. This is an unvalidated checklist weight, not a statistical edge. High-impact news and abnormal spreads create caution; they do not become a prediction. Test your rules on demo and keep your own risk limits.</p>
+  </section>
+  <p class="footer-note">This board contains the 18 symbols visible in the supplied screenshots. It may not be the full XM catalogue for your account. Never enter your MT5 password, account number or other login details into this page.</p>
+</main>
+<script>
+const instruments = [
+ {symbol:"GOLD",group:"metals",groupName:"Metals",label:"GOLD",driver:"USD, US yields, Fed communication, major US data and risk sentiment.",note:"Your main market; verify XM spread and trading hours around major releases."},
+ {symbol:"SILVER",group:"metals",groupName:"Metals",label:"SILVER",driver:"USD, yields, precious-metal flows and industrial-demand headlines.",note:"Can behave differently from gold; do not assume the same setup or volatility."},
+ {symbol:"USDX-DEC26",group:"usd-index",groupName:"USD indices",label:"US Dollar Index December 2026",driver:"US Fed and economic releases; check XM contract dates, hours and roll conditions.",note:"Dated symbol. Verify broker specifications; do not treat it as interchangeable with USD_FX_Index."},
+ {symbol:"OILCash",group:"energy",groupName:"Energy",label:"WTI Oil Cash",driver:"Inventory releases, OPEC/supply headlines, demand outlook and USD.",note:"Check the symbol-specific schedule and any cash-product financing/roll terms in XM."},
+ {symbol:"BTCUSD",group:"crypto",groupName:"Crypto",label:"Bitcoin vs US Dollar",driver:"Crypto-specific headlines, broad risk sentiment and USD; check weekend liquidity.",note:"Verify XM CFD hours and spread; weekend conditions may differ."},
+ {symbol:"ETHUSD",group:"crypto",groupName:"Crypto",label:"Ethereum vs US Dollar",driver:"Crypto-specific headlines, broad risk sentiment and USD; check weekend liquidity.",note:"Do not assume ETH tracks BTC one-for-one; verify XM CFD conditions."},
+ {symbol:"US500Cash",group:"indices",groupName:"Indices",label:"US 500 Index Cash",driver:"US macro/Fed news, US trading session, market breadth and constituent earnings.",note:"Index composition and drivers differ from US100Cash and US30Cash."},
+ {symbol:"US100Cash",group:"indices",groupName:"Indices",label:"US 100 Index Cash",driver:"US macro/Fed news, US trading session, technology-sector breadth and earnings.",note:"Check spread and cash-index hours; volatility can rise around US releases."},
+ {symbol:"US30Cash",group:"indices",groupName:"Indices",label:"Wall Street 30 Index Cash",driver:"US macro/Fed news, US trading session, market breadth and constituent earnings.",note:"Not the same composition or sensitivity as US500Cash/US100Cash."},
+ {symbol:"EURUSD",group:"forex",groupName:"Forex",label:"Euro vs US Dollar",driver:"Euro-area/ECB events and US/Fed events—watch both sides of the pair.",note:"Record the event affecting EUR or USD, not only the US calendar."},
+ {symbol:"GBPUSD",group:"forex",groupName:"Forex",label:"Great Britain Pound vs US Dollar",driver:"UK/BoE events and US/Fed events—watch both sides of the pair.",note:"Check UK and US release times in Bahrain time."},
+ {symbol:"USDJPY",group:"forex",groupName:"Forex",label:"US Dollar vs Japanese Yen",driver:"US/Fed and Japan/BoJ events, yield moves and intervention headlines.",note:"News and yield changes can cause sharp moves; verify spread before acting."},
+ {symbol:"USDCAD",group:"forex",groupName:"Forex",label:"US Dollar vs Canadian Dollar",driver:"US/Fed and Canada/BoC events; oil headlines can also matter.",note:"Check both calendars and treat oil as context rather than a fixed signal."},
+ {symbol:"USDCHF",group:"forex",groupName:"Forex",label:"US Dollar vs Swiss Franc",driver:"US/Fed and Swiss/SNB events, plus risk sentiment and safe-haven flows.",note:"Check both calendars; sudden risk shifts can change volatility."},
+ {symbol:"GBPJPY",group:"forex",groupName:"Forex",label:"Great Britain Pound vs Japanese Yen",driver:"UK/BoE and Japan/BoJ events, plus broader risk sentiment.",note:"Cross-pair; either currency can drive the move. Check both calendars."},
+ {symbol:"GBPCHF",group:"forex",groupName:"Forex",label:"Great Britain Pound vs Swiss Franc",driver:"UK/BoE and Swiss/SNB events, plus broader risk sentiment.",note:"Cross-pair; check both calendars and the broker spread."},
+ {symbol:"SpaceX",group:"equity",groupName:"Equity CFD",label:"Space Exploration Technologies Corp (SPCX.OQ)",driver:"Company/sector headlines and the broker’s equity-CFD trading schedule.",note:"Check the exact XM product details, available hours, corporate-action treatment and gap risk."},
+ {symbol:"USD_FX_Index",group:"usd-index",groupName:"USD indices",label:"USD FX Index",driver:"US Fed and economic releases; confirm how XM calculates and quotes this index.",note:"A separate symbol from USDX-DEC26. Check its own methodology, hours and contract specifications."}
+];
+const KEY="xm-opportunity-board-v1";
+let boardState={};
+let currentFilter="all";
+let searchTerm="";
+let storageOK=true;
+try{boardState=JSON.parse(localStorage.getItem(KEY)||"{}")||{};}catch(e){storageOK=false;boardState={};}
+const fields=[
+ {key:"context",label:"Context · D1 / H4",type:"select",options:["Unclear","Bullish","Bearish","Range"]},
+ {key:"level",label:"Liquidity level / location",type:"text",placeholder:"e.g. prior-day high, session low"},
+ {key:"sweep",label:"Sweep + reclaim?",type:"select",options:["Unknown","No","Yes"]},
+ {key:"structure",label:"Structure shift?",type:"select",options:["Unknown","No","Yes"]},
+ {key:"trigger",label:"Your entry trigger present?",type:"select",options:["Unknown","No","Yes"]},
+ {key:"invalidation",label:"Invalidation defined?",type:"select",options:["No","Yes"]},
+ {key:"event",label:"News risk",type:"select",options:["Unknown","Clear","Upcoming","Active","Just released"]},
+ {key:"eventNote",label:"Event / release time · Bahrain",type:"text",placeholder:"e.g. US CPI · 16:30"},
+ {key:"spread",label:"Spread / session",type:"select",options:["Unknown","Normal","Wide","Market closed"]},
+ {key:"notes",label:"Notes / next check",type:"textarea",placeholder:"What would confirm or invalidate the idea?"}
+];
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function fieldHTML(f,id){const val=(boardState[id]&&boardState[id][f.key])||"";let control="";if(f.type==="select"){control=`<select data-field="${f.key}" aria-label="${esc(f.label)}"><option value="">Select…</option>${f.options.map(o=>`<option${val===o?" selected":""}>${esc(o)}</option>`).join("")}</select>`;}else if(f.type==="textarea"){control=`<textarea data-field="${f.key}" placeholder="${esc(f.placeholder||"")}" aria-label="${esc(f.label)}">${esc(val)}</textarea>`;}else{control=`<input data-field="${f.key}" type="text" value="${esc(val)}" placeholder="${esc(f.placeholder||"")}" aria-label="${esc(f.label)}">`;}return `<div class="field ${f.key==="notes"?"full":""}"><label>${esc(f.label)}</label>${control}</div>`;}
+function makeCard(x){const article=document.createElement("article");article.className="card";article.dataset.symbol=x.symbol;article.dataset.group=x.group;article.dataset.search=(x.symbol+" "+x.groupName+" "+x.label+" "+x.driver).toLowerCase();article.innerHTML=`<div class="card-head"><div><div class="sym-line"><span class="symbol">${esc(x.symbol)}</span><span class="group">${esc(x.groupName)}</span></div><div class="desc">${esc(x.label)}</div></div><div class="scorebox"><div class="score"><span data-score>0</span><small> / 8</small></div><div class="meter"><i data-meter></i></div></div></div><div class="driver"><b>Watch drivers:</b> ${esc(x.driver)}<br><span>${esc(x.note)}</span></div><div class="fields">${fields.map(f=>fieldHTML(f,x.symbol)).join("")}</div><div class="statusline"><span class="status wait" data-status>WAIT · add context</span><span class="status-note" data-statusnote>Checklist only · no live data</span></div>`;
+article.addEventListener("input",onChange);article.addEventListener("change",onChange);return article;}
+function onChange(e){const el=e.target;if(!el.dataset.field)return;const card=el.closest(".card"),sym=card.dataset.symbol;boardState[sym]=boardState[sym]||{};boardState[sym][el.dataset.field]=el.value;saveState();updateCard(card);updateSummary();}
+function getScore(d){return (d.context&&d.context!=="Unclear"?1:0)+(d.level&&d.level.trim()?1:0)+(d.sweep==="Yes"?2:0)+(d.structure==="Yes"?2:0)+(d.trigger==="Yes"?1:0)+(d.invalidation==="Yes"?1:0);}
+function getStatus(d){const score=getScore(d);if(d.spread==="Wide"||d.spread==="Market closed")return {text:"STAND ASIDE · spread / session",cls:"block",kind:"block",score};if(["Upcoming","Active","Just released"].includes(d.event))return {text:"CAUTION · event risk",cls:"caution",kind:"caution",score};const complete=score>=6&&d.structure==="Yes"&&d.trigger==="Yes"&&d.invalidation==="Yes";if(complete){if(!d.event||d.event==="Unknown"||!d.spread||d.spread==="Unknown")return {text:"REVIEW · confirm news & spread",cls:"watch",kind:"candidate",score};return {text:"CANDIDATE · manual plan review",cls:"candidate",kind:"candidate",score};}if(d.context&&d.context!=="Unclear"&&d.level&&d.level.trim())return {text:"WATCH · confluence developing",cls:"watch",kind:"watch",score};return {text:"WAIT · add context",cls:"wait",kind:"wait",score};}
+function updateCard(card){const d=boardState[card.dataset.symbol]||{};const s=getStatus(d);card.querySelector("[data-score]").textContent=s.score;card.querySelector("[data-meter]").style.width=(s.score/8*100)+"%";const badge=card.querySelector("[data-status]");badge.textContent=s.text;badge.className="status "+s.cls;const note=card.querySelector("[data-statusnote]");note.textContent=s.score+" / 8 weighted checklist points";}
+function updateSummary(){let cand=0,caut=0,wait=0;document.querySelectorAll(".card").forEach(c=>{const s=getStatus(boardState[c.dataset.symbol]||{});if(s.kind==="candidate")cand++;if(s.kind==="caution"||s.kind==="block")caut++;if(s.kind==="wait")wait++;});document.getElementById("totalCount").textContent=instruments.length;document.getElementById("candidateCount").textContent=cand;document.getElementById("cautionCount").textContent=caut;document.getElementById("waitCount").textContent=wait;}
+function saveState(){try{localStorage.setItem(KEY,JSON.stringify(boardState));storageOK=true;document.getElementById("saveMsg").textContent="Saved in this browser when local storage is available. Use Export notes for a portable backup; no account data is stored.";}catch(e){storageOK=false;document.getElementById("saveMsg").textContent="This preview/browser cannot save locally. Export notes may work; otherwise keep this tab open or download the HTML and open it in your browser.";}}
+const container=document.getElementById("cards");instruments.forEach(x=>container.appendChild(makeCard(x)));document.querySelectorAll(".card").forEach(updateCard);updateSummary();saveState();
+function applyFilters(){let shown=0;document.querySelectorAll(".card").forEach(c=>{const matchGroup=currentFilter==="all"||c.dataset.group===currentFilter;const matchSearch=!searchTerm||c.dataset.search.includes(searchTerm);const visible=matchGroup&&matchSearch;c.hidden=!visible;if(visible)shown++;});document.getElementById("empty").style.display=shown?"none":"block";}
+document.getElementById("filters").addEventListener("click",e=>{const b=e.target.closest("button[data-filter]");if(!b)return;currentFilter=b.dataset.filter;document.querySelectorAll(".chip").forEach(c=>c.classList.toggle("active",c===b));applyFilters();});
+document.getElementById("search").addEventListener("input",e=>{searchTerm=e.target.value.trim().toLowerCase();applyFilters();});
+document.getElementById("clearBtn").addEventListener("click",()=>{if(!confirm("Clear all notes and dropdowns for this board?"))return;boardState={};saveState();location.reload();});
+document.getElementById("exportBtn").addEventListener("click",()=>{const data={format:"xm-opportunity-board-v1",exportedAt:new Date().toISOString(),notes:boardState};const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="xm-opportunity-board-notes.json";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+document.getElementById("importBtn").addEventListener("click",()=>document.getElementById("importFile").click());
+document.getElementById("importFile").addEventListener("change",async e=>{const file=e.target.files&&e.target.files[0];if(!file)return;try{const obj=JSON.parse(await file.text());const data=obj.notes||obj;if(!data||typeof data!=="object")throw new Error("bad data");boardState=data;saveState();location.reload();}catch(err){alert("Could not read that notes file. Choose a JSON export from this board.");}finally{e.target.value="";}});
+</script>
+</body>
+</html>
